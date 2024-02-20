@@ -3,10 +3,12 @@ import numpy as np
 import random
 import os
 
-def primary_emotions_concept_dataset(data_dir, user_tag='', assistant_tag='', seed=0):
+def primary_emotions_concept_dataset(data_dir, user_tag='', assistant_tag='', seed=0, template_str=None):
     random.seed(0)
 
-    template_str = '{user_tag} Consider the {emotion} of the following scenario:\nScenario: {scenario}\nAnswer: {assistant_tag} '
+    if template_str is None:
+        template_str = '{user_tag} Consider the {emotion} of the following scenario:\nScenario: {scenario}\nAnswer: {assistant_tag} '
+
     emotions = ["happiness", "sadness", "anger", "fear", "disgust", "surprise"]
     raw_data = {}
     for emotion in emotions:
